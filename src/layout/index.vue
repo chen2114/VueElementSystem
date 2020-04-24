@@ -7,7 +7,7 @@
     />
     <el-container
       class="main-container"
-      :class="isCollapse?'collaps-margin':'expand-margin'"
+      :class="isCollapse?'container-collaps':'container-expand'"
     >
       <el-header>
         <ch-header @collapse-change="collapseChange"></ch-header>
@@ -58,11 +58,13 @@ export default {
   .sidebar-collaps {
     width: @sidebar-collaps-width;
   }
-  .expand-margin {
+  .container-expand {
     margin-left: @sidebar-expand-width;
+    width: calc(100% - @sidebar-expand-width);
   }
-  .collaps-margin {
+  .container-collaps {
     margin-left: @sidebar-collaps-width;
+    width: calc(100% - @sidebar-collaps-width);
   }
 }
 </style>

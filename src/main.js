@@ -1,3 +1,6 @@
+import 'babel-polyfill'
+import Es6Promise from 'es6-promise'
+
 import Vue from 'vue'
 import App from './App.vue'
 
@@ -13,6 +16,8 @@ import './libraries/element-ui' // 引入element-ui
 import './libraries/fragment' // 解决导航收起文字没隐藏问题
 
 import './components' // 引入全局组件
+
+Es6Promise.polyfill()
 
 // 导入 SVG
 const requireAll = requireContext => requireContext.keys().map(requireContext)
