@@ -31,6 +31,8 @@ const menu12 = () => import('@/views/nested/menu1/menu1-2/index')
 const menu121 = () => import('@/views/nested/menu1/menu1-2/menu1-2-1')
 const menu122 = () => import('@/views/nested/menu1/menu1-2/menu1-2-2')
 const menu2 = () => import('@/views/nested/menu2/index')
+// 表格
+const table = () => import('@/views/table/index')
 
 export const componentMap = {
   layout,
@@ -49,7 +51,9 @@ export const componentMap = {
   menu12,
   menu121,
   menu122,
-  menu2
+  menu2,
+  // 表格
+  table
 }
 
 export const asyncRoutes = [
@@ -62,7 +66,7 @@ export const asyncRoutes = [
     alwaysShow: true,
     label: '主页',
     meta: {
-      icon: 'el-icon-s-home',
+      icon: 'dashboard',
       requireAuth: true
     },
     children: [
@@ -86,7 +90,7 @@ export const asyncRoutes = [
     alwaysShow: true,
     label: '角色权限',
     meta: {
-      icon: 'el-icon-s-custom',
+      icon: 'lock',
       requireAuth: true
     },
     children: [
@@ -110,7 +114,7 @@ export const asyncRoutes = [
     alwaysShow: true,
     label: '图标',
     meta: {
-      icon: 'el-icon-s-custom',
+      icon: 'icon',
       requireAuth: true
     },
     children: [
@@ -133,7 +137,7 @@ export const asyncRoutes = [
     componentName: 'layout',
     label: '组件',
     meta: {
-      icon: 'el-icon-menu',
+      icon: 'component',
       requireAuth: true
     },
     children: [
@@ -168,7 +172,7 @@ export const asyncRoutes = [
     componentName: 'layout',
     label: '路由嵌套',
     meta: {
-      icon: 'el-icon-menu',
+      icon: 'nested',
       requireAuth: true
     },
     children: [
@@ -234,6 +238,30 @@ export const asyncRoutes = [
         component: menu2,
         componentName: 'menu2',
         label: 'menu2',
+        meta: {
+          requireAuth: true
+        }
+      }
+    ]
+  },
+  {
+    name: 'table',
+    path: '/table',
+    redirect: '/table/index',
+    component: layout,
+    componentName: 'layout',
+    alwaysShow: true,
+    label: '表格',
+    meta: {
+      icon: 'table',
+      requireAuth: true
+    },
+    children: [
+      {
+        name: 'table-index',
+        path: 'index',
+        component: table,
+        componentName: 'table',
         meta: {
           requireAuth: true
         }

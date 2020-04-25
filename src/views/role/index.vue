@@ -1,47 +1,42 @@
 <template>
   <div>
-    <el-table
-      :data="tableData"
-      border
-      size="mini"
-      style="width: 100%"
+    <ch-table
+      :table-data="tableData"
+      :row-options="rowOptions"
     >
-      <el-table-column
-        prop="role"
-        label="角色"
-        header-align="center"
-        align="center"
-        width="100"
-      >
-      </el-table-column>
-      <el-table-column
-        label="权限"
-        header-align="center"
-        align="center"
-      >
-        <template slot-scope="scope">
-          <div>
-            {{ scope.row.routes | filterRoutes }}
-          </div>
-        </template>
-      </el-table-column>
-      <el-table-column
-        label="操作"
-        width="100"
-        header-align="center"
-        align="center"
-      >
-        <template slot-scope="scope">
-          <el-button
-            type="text"
-            size="small"
-            @click="handleClick(scope.row)"
-          >
-            编辑
-          </el-button>
-        </template>
-      </el-table-column>
-    </el-table>
+      <template slot="other">
+        <el-table-column
+          label="权限"
+          prop="routes"
+          header-align="center"
+          align="center"
+        >
+          <template slot-scope="scope">
+            <span>
+              {{ scope.row.routes | filterRoutes }}
+            </span>
+          </template>
+        </el-table-column>
+      </template>
+      <template slot="other">
+        <el-table-column
+          label="操作"
+          width="100"
+          header-align="center"
+          align="center"
+        >
+          <template slot-scope="scope">
+            <el-button
+              type="text"
+              size="small"
+              @click="handleClick(scope.row)"
+            >
+              编辑
+            </el-button>
+          </template>
+        </el-table-column>
+      </template>
+    </ch-table>
     <el-dialog
       title="编辑"
       :visible.sync="dialogVisible"
@@ -65,6 +60,7 @@
 </template>
 <script>
 import { getRoleRoutesList } from '@/api/role'
+import rowOptions from '@/tableRowOptions/role/roleRoutesList'
 import { SET_ROUTES } from '@/libraries/store/mutation-types'
 // import { remove } from 'lodash'
 
@@ -73,6 +69,7 @@ export default {
   data () {
     return {
       dialogVisible: false,
+      rowOptions,
       tableData: [],
       defaultProps: {
         children: 'children',

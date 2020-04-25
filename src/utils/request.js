@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Vue from 'vue'
-import { Message } from 'element-ui'
+import { Notification } from 'element-ui'
 import { SET_TOKEN } from '@/libraries/store/mutation-types'
 
 // 创建 axios 实例
@@ -39,22 +39,21 @@ instance.interceptors.response.use(
     const res = response.data
     // 如果自定义代码不是20000，则判断为错误。
     if (res.code !== 20000) {
-      Message({
-        message: res.message || 'Error',
-        type: 'error',
-        duration: 5 * 1000 // 持续时间
+      Notification({
+        title: res.message || 'Error',
+        message: '请稍后刷新重试',
+        type: 'error'
       })
-      return Promise.reject(new Error(res.message || 'Error'))
+      return Promise.reject(new Error(res.message || 'Error')) // new Error() 将在请求catch中获取到
     } else {
       return res
     }
   },
   error => {
     console.log('err:' + error) // 打印错误信息
-    Message({
-      message: error.message,
-      type: 'error',
-      duration: 5 * 1000
+    Notification.error({
+      title: error.message || 'Error',
+      message: '请稍后刷新重试'
     })
     return Promise.reject(error)
   }

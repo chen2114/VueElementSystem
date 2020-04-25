@@ -16,6 +16,7 @@ import './libraries/element-ui' // 引入element-ui
 import './libraries/fragment' // 解决导航收起文字没隐藏问题
 
 import './components' // 引入全局组件
+import './filters' // 引入全局过滤器
 
 Es6Promise.polyfill()
 

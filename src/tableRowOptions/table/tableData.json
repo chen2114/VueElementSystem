@@ -1,0 +1,54 @@
+[
+  {
+    "label": "ID",
+    "prop": "id",
+    "align": "left",
+    "headerAlign": "left",
+    "minWidth": 120
+  },
+  {
+    "label": "名字",
+    "prop": "name",
+    "align": "left",
+    "headerAlign": "left",
+    "minWidth": 120,
+    "sortable": "custom",
+    "color": "#409eff",
+    "isLink": true
+  },
+  {
+    "label": "数量",
+    "prop": "count",
+    "align": "left",
+    "headerAlign": "left",
+    "minWidth": 120
+  },
+  {
+    "label": "时间",
+    "prop": "date",
+    "align": "center",
+    "headerAlign": "center",
+    "format": "YYYY年MM月DD日 HH:mm:ss",
+    "sortable": "custom",
+    "width": 210
+  },
+  {
+    "label": "状态",
+    "prop": "state",
+    "align": "center",
+    "width": 120,
+    "headerAlign": "center",
+    "filter": [
+      {
+        "label": "通过",
+        "value": 1,
+        "color": "#67C23A"
+      },
+      {
+        "label": "驳回",
+        "value": 2,
+        "color": "#F56C6C"
+      }
+    ]
+  }
+]
