@@ -62,7 +62,7 @@ export const asyncRoutes = [
     alwaysShow: true,
     label: '主页',
     meta: {
-      icon: 'el-icon-s-home',
+      icon: 'dashboard',
       requireAuth: true
     },
     children: [
@@ -86,7 +86,7 @@ export const asyncRoutes = [
     alwaysShow: true,
     label: '角色权限',
     meta: {
-      icon: 'el-icon-s-custom',
+      icon: 'lock',
       requireAuth: true
     },
     children: [
@@ -110,7 +110,7 @@ export const asyncRoutes = [
     alwaysShow: true,
     label: '图标',
     meta: {
-      icon: 'el-icon-s-custom',
+      icon: 'icon',
       requireAuth: true
     },
     children: [
@@ -133,7 +133,7 @@ export const asyncRoutes = [
     componentName: 'layout',
     label: '组件',
     meta: {
-      icon: 'el-icon-menu',
+      icon: 'component',
       requireAuth: true
     },
     children: [
@@ -168,7 +168,7 @@ export const asyncRoutes = [
     componentName: 'layout',
     label: '路由嵌套',
     meta: {
-      icon: 'el-icon-menu',
+      icon: 'nested',
       requireAuth: true
     },
     children: [

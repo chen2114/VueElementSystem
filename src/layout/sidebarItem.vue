@@ -4,9 +4,11 @@
       v-if="route.alwaysShow"
       :index="basePath"
     >
-      <i
+      <ch-svg
         v-if="route.meta.icon"
-        :class="route.meta.icon"
+        class="m-r5"
+        :size="14"
+        :icon-class="route.meta.icon"
       />
       <span slot="title">{{ route.label }}</span>
     </el-menu-item>
@@ -14,9 +16,11 @@
       v-else-if="!route.children"
       :index="basePath"
     >
-      <i
+      <ch-svg
         v-if="route.meta.icon"
-        :class="route.meta.icon"
+        class="m-r5"
+        :size="14"
+        :icon-class="route.meta.icon"
       />
       <span slot="title">{{ route.label }}</span>
     </el-menu-item>
@@ -26,9 +30,11 @@
       popper-append-to-body
     >
       <template slot="title">
-        <i
+        <ch-svg
           v-if="route.meta.icon"
-          :class="route.meta.icon"
+          class="m-r5"
+          :size="14"
+          :icon-class="route.meta.icon"
         />
         <span slot="title">{{ route.label }}</span>
       </template>

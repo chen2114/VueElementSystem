@@ -1,5 +1,4 @@
-import Mock from 'mockjs'
-import { getPayload } from './utils/utils'
+import mockServer from './utils/utils'
 import { asyncRoutes } from '@/libraries/router/asyncRoutes'
 
 function filterRoutes (role) {
@@ -11,24 +10,23 @@ function filterRoutes (role) {
   }
 }
 
-Mock.mock(RegExp('/api/user/getRoutes?.*'), 'get', options => {
-  const payload = getPayload(options)
+mockServer('/user/getRoutes', 'get', payload => {
   return {
-    data: JSON.parse(filterRoutes(payload.role)),
-    code: 20000
+    data: JSON.parse(filterRoutes(payload.role))
   }
 })
 
-Mock.mock('/api/getRoleRoutesList', 'get', {
-  data: [
-    {
-      role: 'admin',
-      routes: JSON.parse(filterRoutes('admin'))
-    },
-    {
-      role: 'editor',
-      routes: JSON.parse(filterRoutes('editor'))
-    }
-  ],
-  code: 20000
+mockServer('/getRoleRoutesList', 'get', () => {
+  return {
+    data: [
+      {
+        role: 'admin',
+        routes: JSON.parse(filterRoutes('admin'))
+      },
+      {
+        role: 'editor',
+        routes: JSON.parse(filterRoutes('editor'))
+      }
+    ]
+  }
 })

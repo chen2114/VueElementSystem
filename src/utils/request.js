@@ -5,7 +5,7 @@ import { SET_TOKEN } from '@/libraries/store/mutation-types'
 
 // 创建 axios 实例
 const instance = axios.create({
-  baseURL: '/api',
+  baseURL: process.env.VUE_APP_BASE_API,
   headers: { 'Content-Type': 'application/json;charset=UTF-8' },
   responseType: 'json', // 返回数据类型
   timeout: 7000, // 超时时间
