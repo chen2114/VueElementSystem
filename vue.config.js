@@ -37,7 +37,7 @@ module.exports = {
     'style-resources-loader': {
       preProcessor: 'less',
       patterns: [
-        resolve('src/style/param.less') // 导入公共样式
+        resolve('src/style/index.less') // 导入公共样式
       ]
     }
   }
