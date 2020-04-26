@@ -46,8 +46,8 @@ export default {
   data () {
     return {
       ruleForm: {
-        account: '',
-        pass: ''
+        account: 'admin',
+        pass: '123456'
       }
     }
   },

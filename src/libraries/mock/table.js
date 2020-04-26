@@ -1,15 +1,13 @@
 import Mock from 'mockjs'
-import { getPayload } from './utils/utils'
+import mockServer from './utils/utils'
 
-Mock.mock(RegExp('/api/getTableData?.*'), 'get', options => {
-  const payload = getPayload(options)
-
+mockServer('/getTableData', 'get', payload => {
   return Mock.mock({
     'data|2-40': [
       {
         id: '@guid()',
         name: function () {
-          if (payload.name === '0') {
+          if (payload.name === '') {
             return Mock.mock('@cname')
           } else {
             return payload.name
@@ -19,8 +17,17 @@ Mock.mock(RegExp('/api/getTableData?.*'), 'get', options => {
         date: '@datetime("20yy-MM-dd HH:mm:ss")',
         'count|0-100': 0
       }
-    ],
-    message: 'ok',
-    code: 20000
+    ]
+  })
+})
+
+mockServer('/getName', 'get', () => {
+  return Mock.mock({
+    'data|1-10': [
+      {
+        label: '@cname',
+        value: '@id'
+      }
+    ]
   })
 })
