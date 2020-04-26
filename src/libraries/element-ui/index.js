@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import 'element-ui/lib/theme-chalk/index.css'
 import {
   Pagination,
   Dialog,
@@ -159,10 +160,10 @@ Vue.use(Avatar)
 
 Vue.use(Loading.directive)
 
-Vue.prototype.$loading = Loading.service
+// Vue.prototype.$loading = Loading.service
 Vue.prototype.$msgbox = MessageBox
-Vue.prototype.$alert = MessageBox.alert
-Vue.prototype.$confirm = MessageBox.confirm
-Vue.prototype.$prompt = MessageBox.prompt
+// Vue.prototype.$alert = MessageBox.alert
+// Vue.prototype.$confirm = MessageBox.confirm
+// Vue.prototype.$prompt = MessageBox.prompt
 Vue.prototype.$notify = Notification
 Vue.prototype.$message = Message
