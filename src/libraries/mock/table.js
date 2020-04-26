@@ -2,7 +2,8 @@ import Mock from 'mockjs'
 import mockServer from './utils/utils'
 
 mockServer('/getTableData', 'get', payload => {
-  return Mock.mock({
+  console.log(payload)
+  const result = Mock.mock({
     'data|2-40': [
       {
         id: '@guid()',
@@ -19,6 +20,34 @@ mockServer('/getTableData', 'get', payload => {
       }
     ]
   })
+  if (payload.prop === 'count') {
+    switch (payload.order) {
+      case 'ascending':
+        result.data.sort((a, b) => {
+          return a.count - b.count
+        })
+        break
+      case 'descending':
+        result.data.sort((a, b) => {
+          return b.count - a.count
+        })
+        break
+    }
+  } else {
+    switch (payload.order) {
+      case 'ascending':
+        result.data.sort((a, b) => {
+          return Date.parse(a.date) - Date.parse(b.date)
+        })
+        break
+      case 'descending':
+        result.data.sort((a, b) => {
+          return Date.parse(b.date) - Date.parse(a.date)
+        })
+        break
+    }
+  }
+  return result
 })
 
 mockServer('/getName', 'get', () => {

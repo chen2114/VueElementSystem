@@ -12,7 +12,6 @@
     "align": "left",
     "headerAlign": "left",
     "minWidth": 120,
-    "sortable": "custom",
     "color": "#409eff",
     "isLink": true
   },
@@ -21,6 +20,7 @@
     "prop": "count",
     "align": "left",
     "headerAlign": "left",
+    "sortable": "custom",
     "minWidth": 120
   },
   {

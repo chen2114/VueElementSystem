@@ -19,6 +19,7 @@
       :table-data="tableData"
       :row-options="rowOptions"
       @row-click="rowClick"
+      @sort-change="handleSortChange"
     >
     </ch-table>
   </div>
@@ -33,7 +34,11 @@ export default {
       restaurants: [],
       name: '',
       rowOptions,
-      tableData: []
+      tableData: [],
+      tableSort: {
+        order: '',
+        prop: ''
+      }
     }
   },
   watch: {
@@ -49,7 +54,8 @@ export default {
   methods: {
     getTableData () {
       const payload = {
-        name: this.name
+        name: this.name,
+        ...this.tableSort
       }
       getTableData(payload)
         .then(res => {
@@ -61,6 +67,14 @@ export default {
     },
     rowClick (data) {
       console.log(data)
+    },
+    // 排序
+    handleSortChange ({ prop, order }) {
+      this.tableSort = {
+        prop,
+        order
+      }
+      this.getTableData()
     },
     // 搜索
     querySearchAsync (queryString, cb) {
