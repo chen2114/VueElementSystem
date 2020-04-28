@@ -2,9 +2,8 @@ import Mock from 'mockjs'
 import mockServer from './utils/utils'
 
 mockServer('/getTableData', 'get', payload => {
-  console.log(payload)
   const result = Mock.mock({
-    'data|2-40': [
+    'data|20-100': [
       {
         id: '@guid()',
         name: function () {

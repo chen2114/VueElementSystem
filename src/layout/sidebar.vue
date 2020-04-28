@@ -58,7 +58,7 @@ export default {
 <style lang="less">
 .sidebar-container {
   width: @sidebar-expand-width;
-  transition: width 0.5s;
+  transition: width 0.3s;
   background-color: #545c64;
   height: 100%;
   position: fixed;

@@ -1,8 +1,8 @@
 <template>
-  <div class="table-container">
+  <div class="ch-table">
     <el-table
-      ref="ehTable"
-      class="eh-table w100 h100"
+      ref="chTable"
+      class="w100"
       v-loading="loading"
       border
       size="mini"
@@ -10,10 +10,11 @@
       element-loading-text="加载中..."
       element-loading-spinner="el-icon-loading"
       :data="tableData"
-      :height="height"
+      :height="height || tableHeight"
       :max-height="maxHeight"
+      :empty-text="emptyText"
       :highlight-current-row="highlightCurrentRow"
-      :row-key="accordion ? getRowKeys : null"
+      :row-key="accordion || reserve ? getRowKeys : null"
       :expand-row-keys="accordion ? expands : null"
       @row-click="rowClick"
       @expand-change="expandChange"
@@ -38,7 +39,7 @@
         header-align="center"
         :width="60"
         :resizable="false"
-        :reserve-selection="accordion"
+        :reserve-selection="reserve"
       />
       <template v-for="(item, index) in rowOptions">
         <el-table-column
@@ -76,6 +77,16 @@
       </template>
       <slot name="other" />
     </el-table>
+    <el-pagination
+      v-if="pageOptions && pageOptions.total"
+      :current-page="pageOptions.currentPage"
+      :page-sizes="pageOptions.pageSizes"
+      :page-size="pageOptions.pageSize"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="pageOptions.total"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+    />
   </div>
 </template>
 <script>
@@ -107,12 +118,17 @@ export default {
     height: {
       // 表格的高度
       type: String,
-      default: '600px'
+      default: null
     },
     maxHeight: {
       // 表格的最大高度
       type: String,
-      default: '800px'
+      default: null
+    },
+    emptyText: {
+      // 空数据时显示的文本内容
+      type: String,
+      default: '暂无数据'
     },
     highlightCurrentRow: {
       // 行点击高亮
@@ -138,12 +154,40 @@ export default {
       // 是否显示多选框
       type: Boolean,
       default: false
+    },
+    reserve: {
+      // 保留选中的数据
+      type: Boolean,
+      default: false
+    },
+    pageOptions: {
+      // 分页的配置
+      type: Object,
+      default: () => {
+        return {
+          total: 0,
+          pageSizes: [10, 20, 30, 50],
+          pageSize: 10,
+          currentPage: 1
+        }
+      }
     }
   },
   data () {
     return {
+      tableHeight: 70,
       expands: []
     }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      this.tableHeight = window.innerHeight - this.$refs.chTable.$el.offsetTop - 70
+      // 监听窗口大小变化
+      const self = this
+      window.onresize = () => {
+        self.tableHeight = window.innerHeight - self.$refs.chTable.$el.offsetTop - 70
+      }
+    })
   },
   methods: {
     setFilterColor (value, opt) {
@@ -155,7 +199,7 @@ export default {
       }
     },
     getRowKeys (row) {
-      if (this.accordion) {
+      if (this.accordion || this.reserve) {
         return findIndex(this.tableData, row)
       }
     },
@@ -210,7 +254,38 @@ export default {
        */
     handleSelectionChange (val) {
       this.$emit('selection-change', val)
+    },
+    /**
+       * @method handleSizeChange pageSize 改变时会触发
+       * @param {Number} val 每页条数
+       */
+    handleSizeChange (val) {
+      this.$emit('page-change', {
+        currentPage: this.pageOptions.currentPage,
+        pageSize: val
+      })
+    },
+    /**
+       * @method handleCurrentChange currentPage 改变时会触发
+       * @param {Number} val 当前页
+       */
+    handleCurrentChange (val) {
+      this.$emit('page-change', {
+        currentPage: val,
+        pageSize: this.pageOptions.pageSize
+      })
     }
   }
 }
 </script>
+<style lang="less">
+.ch-table {
+  text-align: center;
+  .el-pagination {
+    width: 100%;
+    height: 30px;
+    margin-top: 20px;
+    padding: 0;
+  }
+}
+</style>

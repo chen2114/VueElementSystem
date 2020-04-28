@@ -59,7 +59,8 @@ export default {
     width: @sidebar-collaps-width;
   }
   .main-container {
-    transition: margin-left 0.5s;
+    transition: width 0.3s;
+    transition: margin 0.3s;
   }
   .container-expand {
     margin-left: @sidebar-expand-width;
