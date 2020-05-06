@@ -2,7 +2,7 @@
   <div class="ch-table">
     <el-table
       ref="chTable"
-      class="w100"
+      style="width: 100%; height: 100%;"
       v-loading="loading"
       border
       size="mini"
@@ -179,17 +179,23 @@ export default {
       expands: []
     }
   },
+  beforeMount () {
+    window.addEventListener('resize', this.setTableHeight)
+  },
+  beforeDestroy () {
+    window.removeEventListener('resize', this.setTableHeight)
+  },
   mounted () {
-    this.$nextTick(() => {
-      this.tableHeight = window.innerHeight - this.$refs.chTable.$el.offsetTop - 70
-      // 监听窗口大小变化
-      const self = this
-      window.onresize = () => {
-        self.tableHeight = window.innerHeight - self.$refs.chTable.$el.offsetTop - 70
-      }
-    })
+    this.setTableHeight()
   },
   methods: {
+    setTableHeight () {
+      this.$nextTick(() => {
+        if (this.$refs.chTable) {
+          this.tableHeight = window.innerHeight - this.$refs.chTable.$el.offsetTop - 70
+        }
+      })
+    },
     setFilterColor (value, opt) {
       const tmp = opt.filter(item => item.value === value)
       if (tmp.length) {

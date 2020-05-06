@@ -33,6 +33,11 @@ const menu122 = () => import('@/views/nested/menu1/menu1-2/menu1-2-2')
 const menu2 = () => import('@/views/nested/menu2/index')
 // 表格
 const table = () => import('@/views/table/index')
+// 图表
+const charts = () => import('@/views/charts/index')
+// excel
+const exportExcel = () => import('@/views/excel/exportExcel')
+const uploadExcel = () => import('@/views/excel/uploadExcel')
 
 export const componentMap = {
   layout,
@@ -53,7 +58,12 @@ export const componentMap = {
   menu122,
   menu2,
   // 表格
-  table
+  table,
+  // 图表
+  charts,
+  // excel
+  exportExcel,
+  uploadExcel
 }
 
 export const asyncRoutes = [
@@ -158,7 +168,6 @@ export const asyncRoutes = [
         componentName: 'countTo',
         label: '数字滚动',
         meta: {
-          title: '',
           requireAuth: true
         }
       }
@@ -258,10 +267,68 @@ export const asyncRoutes = [
     },
     children: [
       {
-        name: 'table-index',
+        name: 'table_index',
         path: 'index',
         component: table,
         componentName: 'table',
+        meta: {
+          requireAuth: true
+        }
+      }
+    ]
+  },
+  {
+    name: 'charts',
+    path: '/charts',
+    redirect: '/charts/index',
+    component: layout,
+    componentName: 'layout',
+    alwaysShow: true,
+    label: '图表',
+    meta: {
+      icon: 'chart',
+      requireAuth: true
+    },
+    children: [
+      {
+        name: 'charts_index',
+        path: 'index',
+        component: charts,
+        componentName: 'charts',
+        meta: {
+          requireAuth: true
+        }
+      }
+    ]
+  },
+  {
+    name: 'excel',
+    path: '/excel',
+    redirect: '/excel/exportExcel',
+    component: layout,
+    componentName: 'layout',
+    label: 'Excel',
+    meta: {
+      icon: 'excel',
+      requireAuth: true
+    },
+    children: [
+      {
+        name: 'excel_exportExcel',
+        path: 'exportExcel',
+        component: exportExcel,
+        componentName: 'exportExcel',
+        label: '导出 Excel',
+        meta: {
+          requireAuth: true
+        }
+      },
+      {
+        name: 'excel_uploadExcel',
+        path: 'uploadExcel',
+        component: uploadExcel,
+        componentName: 'uploadExcel',
+        label: '上传 Excel',
         meta: {
           requireAuth: true
         }

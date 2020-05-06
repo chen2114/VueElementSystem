@@ -11,6 +11,7 @@
         background-color="#545c64"
         text-color="#fff"
         active-text-color="#ffd04b"
+        @select="handleSelect"
       >
         <template v-for="item in routes">
           <sidebar-item
@@ -41,7 +42,7 @@ export default {
     isCollapse: {
       type: Boolean,
       required: true,
-      default: false
+      default: true
     }
   },
   computed: {
@@ -51,6 +52,13 @@ export default {
         return '/'
       }
       return path.replace('/index', '')
+    }
+  },
+  methods: {
+    handleSelect () {
+      if (window.innerWidth <= 768) {
+        this.$emit('update:is-collapse', !this.isCollapse)
+      }
     }
   }
 }

@@ -14,6 +14,7 @@ import { ICONS_MAP } from './libraries/store/mutation-types'
 import './libraries/mock' // mock 随机数据
 import './libraries/element-ui' // 引入element-ui
 import './libraries/fragment' // 解决导航收起文字没隐藏问题
+import './libraries/echarts' // 引入echarts
 
 import './components' // 引入全局组件
 import './filters' // 引入全局过滤器

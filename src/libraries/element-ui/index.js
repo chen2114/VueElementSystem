@@ -78,7 +78,8 @@ import {
   Message,
   Notification,
   Scrollbar,
-  Avatar
+  Avatar,
+  Drawer
 } from 'element-ui'
 
 Vue.use(Pagination)
@@ -156,6 +157,7 @@ Vue.use(PageHeader)
 Vue.use(CascaderPanel)
 Vue.use(Scrollbar)
 Vue.use(Avatar)
+Vue.use(Drawer)
 
 Vue.use(Loading.directive)
 

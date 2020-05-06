@@ -15,7 +15,16 @@ mockServer('/getTableData', 'get', payload => {
         },
         'state|1-2': 1,
         date: '@datetime("20yy-MM-dd HH:mm:ss")',
-        'count|0-100': 0
+        'count|0-100': 0,
+        'childData|0-10': [
+          {
+            id: '@guid()',
+            name: '@cname',
+            'state|1-2': 1,
+            date: '@datetime("20yy-MM-dd HH:mm:ss")',
+            'count|0-100': 0
+          }
+        ]
       }
     ]
   })

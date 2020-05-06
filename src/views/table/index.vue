@@ -24,10 +24,11 @@
     </div>
     <ch-table
       ref="teamStaffTable"
-      showIndex
-      showSelection
+      show-index
+      show-selection
       accordion
       reserve
+      :loading="tableLoading"
       :table-data="tableData"
       :row-options="rowOptions"
       :page-options="pageOptions"
@@ -61,12 +62,12 @@
           type="expand"
         >
           <template slot-scope="{row}">
-            <ul>
-              <li>{{ row.id }}</li>
-              <li>{{ row.name }}</li>
-              <li>{{ row.count }}</li>
-              <li>{{ row.date }}</li>
-            </ul>
+            <ch-table
+              show-selection
+              height="100%"
+              :table-data="row.childData"
+              :row-options="rowOptions"
+            />
           </template>
         </el-table-column>
       </template>
@@ -84,6 +85,7 @@ export default {
       name: '',
       rowOptions,
       tableData: [],
+      tableLoading: false,
       tableSort: {
         order: '',
         prop: ''
@@ -114,14 +116,18 @@ export default {
         pageSize: this.pageOptions.pageSize,
         ...this.tableSort
       }
+      this.tableLoading = true
       getTableData(payload)
         .then(res => {
           this.tableData = res.data
           this.pageOptions.total = res.total
           // console.log(res)
         })
-        .catch(err => {
-          console.log(err)
+        .then(_ => {
+          this.tableLoading = false
+        })
+        .catch(_ => {
+          this.tableLoading = false
         })
     },
     // 表格行点击
