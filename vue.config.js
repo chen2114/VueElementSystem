@@ -6,6 +6,15 @@ function resolve (dir) {
 }
 
 module.exports = {
+  /**
+  * 如果计划在子路径下部署站点，则需要设置publicPath，
+  * 例如GitHub页面。如果您计划将站点部署到https://foo.github.io/bar/，
+  * 那么publicPath应该设置为“/bar/”
+  * 在大多数情况下，请使用“/”！！！
+  */
+  publicPath: './',
+  outputDir: 'dist', // 生成文件的目录名称
+  lintOnSave: process.env.NODE_ENV === 'development', // 是否关闭eslint
   productionSourceMap: !(env === 'production'),
   chainWebpack: config => {
     if (env === 'production') {
@@ -25,6 +34,14 @@ module.exports = {
         symbolId: 'icon-[name]'
       })
   },
+  // configureWebpack: {
+  //   name: 'vue element system',
+  //   resolve: {
+  //     alias: {
+  //       '@': resolve('src')
+  //     }
+  //   }
+  // },
   // css: {
   //   // 是否使用css分离插件 ExtractTextPlugin, 这会使vue中修改css无法自动更新
   //   extract: true,
