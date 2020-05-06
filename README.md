@@ -26,7 +26,13 @@
   - 头像上传
   - CountTo
 
-- Clipboard(剪贴复制)
+- Clipboard（剪贴复制）
+
+- chart（图表）
+
+- excel
+  - export excel（导出excel表格）
+  - upload excel（上传excel表格）
 ```
 
 ## 开发
