@@ -175,7 +175,7 @@ export default {
   },
   data () {
     return {
-      tableHeight: 70,
+      tableHeight: 500,
       expands: []
     }
   },
