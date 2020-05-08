@@ -1,4 +1,4 @@
-# vue-element-system
+# template
 
 ## 简介
 ---
@@ -36,7 +36,6 @@
 ```
 
 ## 开发
----
 ```
 # 安装依赖
 yarn install
