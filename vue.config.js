@@ -12,7 +12,7 @@ module.exports = {
   * 那么publicPath应该设置为“/bar/”
   * 在大多数情况下，请使用“/”！！！
   */
-  publicPath: './',
+  publicPath: '/',
   outputDir: 'dist', // 生成文件的目录名称
   lintOnSave: process.env.NODE_ENV === 'development', // 是否关闭eslint
   productionSourceMap: !(env === 'production'),
