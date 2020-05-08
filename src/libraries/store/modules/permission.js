@@ -47,7 +47,8 @@ const actions = {
       httpGet(url, payload).then(res => {
         if (res.code === 20000) {
           const routes = setComponentAndRedirect(res.data)
-          routes.push({ path: '*', redirect: '/404', hidden: true }) // 注意：404 页面一定要最后加载，否则后面的所以页面都会被拦截到 404
+          // 注意：404 页面一定要最后加载，否则后面的所以页面都会被拦截到 404
+          routes.push({ path: '*', redirect: '/404', hidden: true })
           commit(SET_ROUTES, res.data)
           resolve(routes)
         } else {

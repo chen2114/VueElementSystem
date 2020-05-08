@@ -1,7 +1,7 @@
 <template>
   <fragment>
     <el-menu-item
-      v-if="route.alwaysShow"
+      v-if="route.alwaysShow || !route.children"
       :index="basePath"
     >
       <ch-svg
@@ -10,9 +10,11 @@
         :size="14"
         :icon-class="route.meta.icon"
       />
-      <span slot="title">{{ route.label }}</span>
+      <span slot="title">
+        {{ route.label }}
+      </span>
     </el-menu-item>
-    <el-menu-item
+    <!-- <el-menu-item
       v-else-if="!route.children"
       :index="basePath"
     >
@@ -23,7 +25,7 @@
         :icon-class="route.meta.icon"
       />
       <span slot="title">{{ route.label }}</span>
-    </el-menu-item>
+    </el-menu-item> -->
     <el-submenu
       v-else
       :index="basePath"

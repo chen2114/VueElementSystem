@@ -6,7 +6,6 @@
         :collapse="isCollapse"
         :unique-opened="false"
         :collapse-transition="false"
-        router
         mode="vertical"
         background-color="#545c64"
         text-color="#fff"
@@ -27,7 +26,7 @@
 </template>
 <script>
 import sidebarItem from './sidebarItem'
-
+import { isExternal } from '@/utils/validate'
 export default {
   name: 'Sidebar',
   components: {
@@ -55,7 +54,12 @@ export default {
     }
   },
   methods: {
-    handleSelect () {
+    handleSelect (val) {
+      if (isExternal(val)) {
+        window.open(val)
+      } else {
+        this.$router.push(val)
+      }
       if (window.innerWidth <= 768) {
         this.$emit('update:is-collapse', !this.isCollapse)
       }

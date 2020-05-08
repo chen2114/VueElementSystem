@@ -173,9 +173,18 @@ export default {
       }
     }
   },
+  watch: {
+    'pageOptions.total': function (newVal) {
+      if (newVal) {
+        this.bottomHeight = 70
+        this.setTableHeight()
+      }
+    }
+  },
   data () {
     return {
       tableHeight: 500,
+      bottomHeight: 20,
       expands: []
     }
   },
@@ -192,7 +201,7 @@ export default {
     setTableHeight () {
       this.$nextTick(() => {
         if (this.$refs.chTable) {
-          this.tableHeight = window.innerHeight - this.$refs.chTable.$el.offsetTop - 70
+          this.tableHeight = window.innerHeight - this.$refs.chTable.$el.offsetTop - this.bottomHeight
         }
       })
     },

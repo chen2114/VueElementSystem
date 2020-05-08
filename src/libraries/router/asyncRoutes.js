@@ -334,6 +334,17 @@ export const asyncRoutes = [
         }
       }
     ]
+  },
+  {
+    name: 'external-link',
+    path: 'https://gitee.com/chen_project/VueElementSystem',
+    component: layout,
+    componentName: 'layout',
+    label: '外链',
+    meta: {
+      icon: 'link',
+      requireAuth: true
+    }
   }
   // { // 注意：404 页面一定要最后加载，否则后面的所以页面都会被拦截到 404
   //   path: '*',
