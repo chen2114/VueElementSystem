@@ -4,33 +4,44 @@
  */
 
 /**
- * alwaysShow           如果设置为true，则为根菜单（默认为false）
  * hidden               如果设置为true，则该路由不会显示在侧边栏中（默认为false）
  * componentName        绑定的组件名称
- * label                侧栏显示的名称
  * meta: {
  *  icon: 'svg-name'    侧栏中的图标
+ *  label: 'label'      侧栏显示的名称
  *  requireAuth: true   如果设置为true，则为用户具有该页面的权限（默认为true）
  * }
  */
 
-const layout = () => import('@/layout/index')
+const layout = () =>
+  import(/* webpackChunkName: "layout" */ '@/layout/index')
 // 主页
-const home = () => import('@/views/home/index')
+const home = () =>
+  import(/* webpackChunkName: "home" */ '@/views/home/index')
 // 权限
-const role = () => import('@/views/role/index')
+const role = () =>
+  import(/* webpackChunkName: "role" */ '@/views/role/index')
 // 图标
-const icons = () => import('@/views/icons/index')
+const icons = () =>
+  import(/* webpackChunkName: "icons" */ '@/views/icons/index')
 // 组件
-const avatarUpload = () => import('@/views/components/avatarUpload')
-const countTo = () => import('@/views/components/countTo')
+const avatarUpload = () =>
+  import(/* webpackChunkName: "components_avatarUpload" */ '@/views/components/avatarUpload')
+const countTo = () =>
+  import(/* webpackChunkName: "components_countTo" */ '@/views/components/countTo')
 // 路由嵌套
-const menu1 = () => import('@/views/nested/menu1/index')
-const menu11 = () => import('@/views//nested/menu1/menu1-1/index')
-const menu12 = () => import('@/views/nested/menu1/menu1-2/index')
-const menu121 = () => import('@/views/nested/menu1/menu1-2/menu1-2-1')
-const menu122 = () => import('@/views/nested/menu1/menu1-2/menu1-2-2')
-const menu2 = () => import('@/views/nested/menu2/index')
+const menu1 = () =>
+  import(/* webpackChunkName: "nested_menu1" */ '@/views/nested/menu1/index')
+const menu11 = () =>
+  import(/* webpackChunkName: "nested_menu1_menu1-1" */ '@/views//nested/menu1/menu1-1/index')
+const menu12 = () =>
+  import(/* webpackChunkName: "nested_menu1_menu1-2" */ '@/views/nested/menu1/menu1-2/index')
+const menu121 = () =>
+  import(/* webpackChunkName: "nested_menu1_menu1-2_menu1-2-1" */ '@/views/nested/menu1/menu1-2/menu1-2-1')
+const menu122 = () =>
+  import(/* webpackChunkName: "nested_menu1_menu1-2_menu1-2-2" */ '@/views/nested/menu1/menu1-2/menu1-2-2')
+const menu2 = () =>
+  import(/* webpackChunkName: "nested_menu2" */ '@/views/nested/menu2/index')
 
 export const componentMap = {
   layout,
@@ -59,12 +70,6 @@ export const asyncRoutes = [
     redirect: '/home',
     component: layout,
     componentName: 'layout',
-    alwaysShow: true,
-    label: '主页',
-    meta: {
-      icon: 'dashboard',
-      requireAuth: true
-    },
     children: [
       {
         name: 'home_index',
@@ -72,6 +77,8 @@ export const asyncRoutes = [
         component: home,
         componentName: 'home',
         meta: {
+          label: '主页',
+          icon: 'dashboard',
           requireAuth: true
         }
       }
@@ -83,12 +90,6 @@ export const asyncRoutes = [
     redirect: '/role/index',
     component: layout,
     componentName: 'layout',
-    alwaysShow: true,
-    label: '角色权限',
-    meta: {
-      icon: 'lock',
-      requireAuth: true
-    },
     children: [
       {
         name: 'role_index',
@@ -96,6 +97,8 @@ export const asyncRoutes = [
         component: role,
         componentName: 'role',
         meta: {
+          label: '角色权限',
+          icon: 'lock',
           requireAuth: true
         }
       }
@@ -107,12 +110,6 @@ export const asyncRoutes = [
     redirect: '/icons/index',
     component: layout,
     componentName: 'layout',
-    alwaysShow: true,
-    label: '图标',
-    meta: {
-      icon: 'icon',
-      requireAuth: true
-    },
     children: [
       {
         name: 'icons_index',
@@ -120,6 +117,8 @@ export const asyncRoutes = [
         component: icons,
         componentName: 'icons',
         meta: {
+          label: '图标',
+          icon: 'icon',
           requireAuth: true
         }
       }
@@ -131,8 +130,8 @@ export const asyncRoutes = [
     redirect: '/components/avatarUpload',
     component: layout,
     componentName: 'layout',
-    label: '组件',
     meta: {
+      label: '组件',
       icon: 'component',
       requireAuth: true
     },
@@ -142,8 +141,8 @@ export const asyncRoutes = [
         path: 'avatarUpload',
         component: avatarUpload,
         componentName: 'avatarUpload',
-        label: '头像上传',
         meta: {
+          label: '头像上传',
           requireAuth: true
         }
       },
@@ -152,9 +151,8 @@ export const asyncRoutes = [
         path: 'countTo',
         component: countTo,
         componentName: 'countTo',
-        label: '数字滚动',
         meta: {
-          title: '',
+          label: '数字滚动',
           requireAuth: true
         }
       }
@@ -166,8 +164,8 @@ export const asyncRoutes = [
     redirect: '/nested/menu1/menu1-1',
     component: layout,
     componentName: 'layout',
-    label: '路由嵌套',
     meta: {
+      label: '路由嵌套',
       icon: 'nested',
       requireAuth: true
     },
@@ -175,11 +173,11 @@ export const asyncRoutes = [
       {
         name: 'nested_menu1',
         path: 'menu1',
-        redirect: '/menu1/menu1-1',
+        redirect: '/nested/menu1/menu1-1',
         component: menu1,
         componentName: 'menu1',
-        label: 'menu1',
         meta: {
+          label: 'menu1',
           requireAuth: true
         },
         children: [
@@ -188,8 +186,8 @@ export const asyncRoutes = [
             path: 'menu1-1',
             component: menu11,
             componentName: 'menu11',
-            label: 'menu1-1',
             meta: {
+              label: 'menu1-1',
               requireAuth: true
             }
           },
@@ -199,8 +197,8 @@ export const asyncRoutes = [
             component: menu12,
             componentName: 'menu12',
             redirect: '/nested/menu1/menu1-2/menu1-2-1',
-            label: 'menu1-2',
             meta: {
+              label: 'menu1-2',
               requireAuth: true
             },
             children: [
@@ -209,8 +207,8 @@ export const asyncRoutes = [
                 path: 'menu1-2-1',
                 component: menu121,
                 componentName: 'menu121',
-                label: 'menu1-2-1',
                 meta: {
+                  label: 'menu1-2-1',
                   requireAuth: true
                 }
               },
@@ -219,8 +217,8 @@ export const asyncRoutes = [
                 path: 'menu1-2-2',
                 component: menu122,
                 componentName: 'menu122',
-                label: 'menu1-2-2',
                 meta: {
+                  label: 'menu1-2-2',
                   requireAuth: true
                 }
               }
@@ -233,8 +231,8 @@ export const asyncRoutes = [
         path: 'menu2',
         component: menu2,
         componentName: 'menu2',
-        label: 'menu2',
         meta: {
+          label: 'menu2',
           requireAuth: true
         }
       }

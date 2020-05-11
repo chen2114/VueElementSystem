@@ -99,31 +99,31 @@ export default {
     // 打开弹窗
     handleClick (val) {
       this.defaultCheck = []
-      const arr = []
-      this.$ls.get(SET_ROUTES).map(item => {
-        const tmp = { ...item }
-        if (!tmp.hidden) {
-          if (tmp.alwaysShow) {
-            tmp.children = []
-          }
-          if (tmp.label === '主页') {
-            tmp.disabled = true
-          }
-          arr.push(tmp)
-        }
-      })
-      this.routesData = arr
+      this.routesData = this.$ls.get(SET_ROUTES).filter(item => !item.hidden)
+      this.getRoutesData(this.routesData)
       this.getDefaultCheck(val.routes)
       this.dialogVisible = true
-      // DOM的异步更新
-      // this.$nextTick(() => {
-      //   this.$refs.tree.setCheckedNodes(val.routes)
-      // })
+    },
+    getRoutesData (data) {
+      for (const item of data) {
+        if (!item.meta) {
+          item.label = item.children[0].meta.label
+          item.children = []
+          if (item.name === 'home') {
+            item.disabled = true
+          }
+        } else {
+          item.label = item.meta.label
+          if (item.children) {
+            this.getRoutesData(item.children)
+          }
+        }
+      }
     },
     // 获取tree默认选中的节点
     getDefaultCheck (data) {
       data.map(item => {
-        if (item.alwaysShow) {
+        if (!item.meta) {
           this.defaultCheck.push(item.name)
         } else {
           if (item.children) {
@@ -151,7 +151,7 @@ export default {
         } else {
           const isActive = activeName.indexOf(data[i].name) !== -1
           if (isActive) {
-            if (!data[i].alwaysShow) {
+            if (data[i].meta) {
               if (data[i].children) {
                 this.editRoutes(data[i].children, activeName)
               }

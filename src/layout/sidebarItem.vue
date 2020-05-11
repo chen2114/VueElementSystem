@@ -1,16 +1,15 @@
 <template>
   <fragment>
     <el-menu-item
-      v-if="route.alwaysShow"
+      v-if="!route.meta"
       :index="basePath"
     >
       <ch-svg
-        v-if="route.meta.icon"
         class="m-r5"
         :size="14"
-        :icon-class="route.meta.icon"
+        :icon-class="route.children[0].meta.icon"
       />
-      <span slot="title">{{ route.label }}</span>
+      <span slot="title">{{ route.children[0].meta.label }}</span>
     </el-menu-item>
     <el-menu-item
       v-else-if="!route.children"
@@ -22,7 +21,7 @@
         :size="14"
         :icon-class="route.meta.icon"
       />
-      <span slot="title">{{ route.label }}</span>
+      <span slot="title">{{ route.meta.label }}</span>
     </el-menu-item>
     <el-submenu
       v-else
@@ -36,7 +35,7 @@
           :size="14"
           :icon-class="route.meta.icon"
         />
-        <span slot="title">{{ route.label }}</span>
+        <span slot="title">{{ route.meta.label }}</span>
       </template>
       <sidebar-item
         v-for="child in route.children"

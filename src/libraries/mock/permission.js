@@ -5,7 +5,13 @@ function filterRoutes (role) {
   if (role === 'admin') {
     return JSON.stringify(asyncRoutes)
   } else {
-    const arr = asyncRoutes.filter(item => item.name !== 'role')
+    const arr = asyncRoutes.filter(item => {
+      if (item.meta) {
+        return item
+      } else if (item.name !== 'role') {
+        return item
+      }
+    })
     return JSON.stringify(arr)
   }
 }
