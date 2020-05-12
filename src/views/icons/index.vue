@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     copyIcon (data) {
-      clipboard(`<ch-svg :icon-class='${data}' :size='25' color='#000' />`)
+      clipboard(`<ch-svg icon-class='${data}' :size='25' color='#000' />`)
     }
   }
 }
