@@ -1,0 +1,9 @@
+[
+  {
+    "label": "角色",
+    "prop": "role",
+    "align": "center",
+    "headerAlign": "center",
+    "width": 120
+  }
+]
