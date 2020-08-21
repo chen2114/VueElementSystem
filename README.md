@@ -8,7 +8,7 @@
 ---
 你需要在本地安装 `node` 和 `git`。本项目技术栈基于 `ES2015+`、`vue`、`vuex`、`vue-router` 、`vue-cli` 、`axios` 和 `element-ui`，所有的请求数据都使用`Mock.js`进行模拟，提前了解和学习这些知识会对使用本项目有很大的帮助。
 
-## 功能
+## 目录
 ---
 ```
 - public
