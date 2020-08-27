@@ -12,9 +12,9 @@
       >
         <div class="grid-content">
           <ch-svg
-            :icon-class='item.icon'
-            :size='50'
-            :color='item.color'
+            :icon-class="item.icon"
+            :size="50"
+            :color="item.color"
           />
           <div class="hidden-500-only">
             <h3>{{ item.title }}</h3>

@@ -51,9 +51,15 @@
         show-checkbox
         accordion
       />
-      <span slot="footer" class="dialog-footer">
+      <span
+        slot="footer"
+        class="dialog-footer"
+      >
         <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="confirm">确 定</el-button>
+        <el-button
+          type="primary"
+          @click="confirm"
+        >确 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -66,6 +72,11 @@ import { SET_ROUTES } from '@/libraries/store/mutation-types'
 
 export default {
   name: 'Role',
+  filters: {
+    filterRoutes (val) {
+      return JSON.stringify(val)
+    }
+  },
   data () {
     return {
       dialogVisible: false,
@@ -77,11 +88,6 @@ export default {
       },
       routesData: [],
       defaultCheck: []
-    }
-  },
-  filters: {
-    filterRoutes (val) {
-      return JSON.stringify(val)
     }
   },
   created () {

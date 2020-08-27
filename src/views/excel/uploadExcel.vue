@@ -11,9 +11,16 @@
       :on-change="handleChange"
       accept=".xlsx,.xls"
     >
-      <i class="el-icon-upload"></i>
-      <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-      <div class="el-upload__tip" slot="tip">只能上传excel文件，且不超过5MB</div>
+      <i class="el-icon-upload" />
+      <div class="el-upload__text">
+        将文件拖到此处，或<em>点击上传</em>
+      </div>
+      <div
+        slot="tip"
+        class="el-upload__tip"
+      >
+        只能上传excel文件，且不超过5MB
+      </div>
     </el-upload>
     <ch-table
       class="m-t20"

@@ -24,8 +24,8 @@
         prop="pass"
       >
         <el-input
-          type="password"
           v-model="ruleForm.pass"
+          type="password"
           autocomplete="off"
         />
       </el-form-item>
@@ -50,7 +50,7 @@
 import { mapActions } from 'vuex'
 
 export default {
-  name: 'login',
+  name: 'Login',
   data () {
     return {
       ruleForm: {

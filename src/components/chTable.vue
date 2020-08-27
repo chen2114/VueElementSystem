@@ -2,8 +2,8 @@
   <div class="ch-table">
     <el-table
       ref="chTable"
-      style="width: 100%; height: 100%;"
       v-loading="loading"
+      style="width: 100%; height: 100%;"
       border
       size="mini"
       tooltip-effect="dark"

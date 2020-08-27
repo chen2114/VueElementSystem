@@ -1,7 +1,10 @@
 <template>
   <div class="count-to">
     <aside>
-      <a href="http://panjiachen.github.io/countTo/demo/" target="_blank">vue-count-to</a>
+      <a
+        href="http://panjiachen.github.io/countTo/demo/"
+        target="_blank"
+      >vue-count-to</a>
     </aside>
     <count-to
       ref="example"
@@ -104,9 +107,11 @@
         >
       </label>
     </div>
-    <aside>&lt;count-to :start-val=&#x27;{{ _startVal }}&#x27; :end-val=&#x27;{{ _endVal }}&#x27; :duration=&#x27;{{ _duration }}&#x27;
+    <aside>
+      &lt;count-to :start-val=&#x27;{{ _startVal }}&#x27; :end-val=&#x27;{{ _endVal }}&#x27; :duration=&#x27;{{ _duration }}&#x27;
       :decimals=&#x27;{{ _decimals }}&#x27; :separator=&#x27;{{ _separator }}&#x27; :prefix=&#x27;{{ _prefix }}&#x27; :suffix=&#x27;{{ _suffix }}&#x27;
-      :autoplay=false /&gt;</aside>
+      :autoplay=false /&gt;
+    </aside>
   </div>
 </template>
 <script>
