@@ -1,17 +1,20 @@
 <template>
   <div class="avatar-upload flex f-a-around f-wrap">
     <aside class="w100 m-b30">
-      <a href="https://github.com/dai-siki/vue-image-crop-upload" target="_blank">vue-image-crop-upload</a>
+      <a
+        href="https://github.com/dai-siki/vue-image-crop-upload"
+        target="_blank"
+      >vue-image-crop-upload</a>
     </aside>
     <my-upload
       v-model="show"
       url=""
       field="Avatar"
       img-format="png"
-      langType='zh'
+      lang-type="zh"
       :width="200"
       :height="200"
-      :noRotate='false'
+      :no-rotate="false"
       @crop-success="cropSuccess"
       @crop-upload-success="cropUploadSuccess"
       @crop-upload-fail="cropUploadFail"
@@ -25,7 +28,7 @@
         :size="150"
         :src="circleUrl"
       >
-        <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png" />
+        <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png">
       </el-avatar>
     </div>
     <div>
@@ -44,7 +47,7 @@
           :size="150"
           :src="squareUrl"
         >
-          <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png" />
+          <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png">
         </el-avatar>
       </el-upload>
     </div>
@@ -55,15 +58,15 @@ import myUpload from 'vue-image-crop-upload'
 
 export default {
   name: 'AvatarUpload',
+  components: {
+    myUpload
+  },
   data () {
     return {
       show: false,
       circleUrl: '',
       squareUrl: ''
     }
-  },
-  components: {
-    myUpload
   },
   methods: {
     toggleShow () {
