@@ -10,31 +10,31 @@
 
 ## 目录
 ---
-```
-- public
-
-- src
-  - api 接口
-  - assets 资源
-  - components 公用组件
-  - filters 公用过滤器
-  - layout 基础路由组件
-  - libraries 插件
-  - style 样式文件
-  - svg svg图
-  - tableRowOptions 表格配置文件
-  - utils 公用js文件
-  - vendor 导出excel配置文件
-  - views 路由组件
-  - App.vue
-  - main.js 路口文件
-  - peimission.js 登录权限设置
-
-- .env.development 生产环境基础api
-
-- .env.development 开发环境基础api
-
-- vue.config.js webpack配置文件
+``` sh
+├── public              # 静态资源
+├── src                 # 源代码
+    │── api             # 所有请求
+    ├── assets          # 主题 字体等静态资源
+    ├── components      # 全局公用组件
+    ├── filters         # 全局 filter
+    ├── layout          # 全局 layout
+    ├── libraries       # 插件
+    ├── style           # 全局样式
+    ├── svg             # svg图
+    ├── tableRowOptions # 表格配置文件
+    ├── utils           # 全局公用方法
+    ├── vendor          # 导出excel配置文件
+    ├── views           # views 所有页面
+    ├── App.vue         # 入口页面
+    ├── main.js         # 入口文件 加载组件 初始化等
+    └── peimission.js   # 权限管理
+├── .env.development    # 生产环境基础api
+├── .env.development    # 开发环境基础api
+├── .eslintrc.js        # eslint 配置项
+├── .gitignore          # git 配置项
+├── babel.config.js     # babel-loader 配置
+├── package.json        # package.json
+└── vue.config.js       # vue-cli 配置
 
 ```
 
