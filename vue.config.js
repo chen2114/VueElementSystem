@@ -14,8 +14,8 @@ module.exports = {
   */
   publicPath: './',
   outputDir: 'dist', // 生成文件的目录名称
-  lintOnSave: process.env.NODE_ENV === 'development', // 是否关闭eslint
-  productionSourceMap: !(env === 'production'),
+  lintOnSave: env === 'development', // 是否开启eslint保存检测，有效值：ture | false | 'error'
+  productionSourceMap: !(env === 'production'), // 如果你不需要生产环境的 source map，可以将其设置为 false 以加速生产环境构建。
   chainWebpack: config => {
     if (env === 'production') {
       config.entry.app = ['@babel/polyfill', 'src/main.js']
@@ -34,22 +34,22 @@ module.exports = {
         symbolId: 'icon-[name]'
       })
   },
-  // configureWebpack: {
-  //   name: 'vue element system',
-  //   resolve: {
-  //     alias: {
-  //       '@': resolve('src')
-  //     }
-  //   }
-  // },
-  // css: {
-  //   // 是否使用css分离插件 ExtractTextPlugin, 这会使vue中修改css无法自动更新
-  //   extract: true,
-  //   // 开启 CSS source maps?
-  //   sourceMap: false,
-  //   // css预设器配置项
-  //   loaderOptions: {}
-  // },
+  configureWebpack: {
+    name: 'vue element system',
+    resolve: {
+      alias: {
+        '@': resolve('src')
+      }
+    }
+  },
+  css: {
+    // 是否使用css分离插件 ExtractTextPlugin, 这会使vue中修改css无法自动更新
+    extract: env === 'production',
+    // 开启 CSS source maps?
+    sourceMap: false,
+    // css预设器配置项
+    loaderOptions: {}
+  },
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'less',
