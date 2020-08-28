@@ -3,14 +3,14 @@
     <ch-sidebar
       :class="isCollapse?'sidebar-collaps':'sidebar-expand'"
       :routes="asyncRouter"
-      :isCollapse="isCollapse"
+      :is-collapse="isCollapse"
     />
     <el-container
       class="main-container"
       :class="isCollapse?'container-collaps':'container-expand'"
     >
       <el-header>
-        <ch-header @collapse-change="collapseChange"></ch-header>
+        <ch-header @collapse-change="collapseChange" />
       </el-header>
       <el-main>
         <router-view :key="key" />

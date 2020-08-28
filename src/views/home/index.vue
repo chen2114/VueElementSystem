@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="home-warp"></div>
+    <div class="home-warp" />
     <div class="home-logo">
       <img src="@/assets/logo.png">
     </div>
@@ -8,7 +8,7 @@
 </template>
 <script>
 export default {
-  name: 'home',
+  name: 'Home',
   data () {
     return {
       value: ''

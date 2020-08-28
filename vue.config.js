@@ -25,14 +25,14 @@ module.exports = {
         symbolId: 'icon-[name]'
       })
   },
-  // css: {
-  //   // 是否使用css分离插件 ExtractTextPlugin, 这会使vue中修改css无法自动更新
-  //   extract: true,
-  //   // 开启 CSS source maps?
-  //   sourceMap: false,
-  //   // css预设器配置项
-  //   loaderOptions: {}
-  // },
+  css: {
+    // 是否使用css分离插件 ExtractTextPlugin, 这会使vue中修改css无法自动更新
+    extract: env === 'production',
+    // 开启 CSS source maps?
+    sourceMap: false,
+    // css预设器配置项
+    loaderOptions: {}
+  },
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'less',

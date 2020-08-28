@@ -1,9 +1,9 @@
 <template>
   <div class="login">
     <el-form
+      ref="ruleForm"
       :model="ruleForm"
       status-icon
-      ref="ruleForm"
       label-width="50px"
       class="demo-ruleForm"
       @keyup.enter.native="submitForm('ruleForm')"
@@ -19,8 +19,8 @@
         prop="pass"
       >
         <el-input
-          type="password"
           v-model="ruleForm.pass"
+          type="password"
           autocomplete="off"
         />
       </el-form-item>
@@ -39,7 +39,7 @@
 import { mapActions } from 'vuex'
 
 export default {
-  name: 'login',
+  name: 'Login',
   data () {
     return {
       ruleForm: {
