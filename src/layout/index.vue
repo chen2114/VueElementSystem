@@ -46,6 +46,17 @@ export default {
     key () {
       return this.$route.path
     }
+  },
+  beforeMount () {
+    window.addEventListener('resize', this.resizeHandler)
+  },
+  beforeDestroy () {
+    window.removeEventListener('resize', this.resizeHandler)
+  },
+  methods: {
+    resizeHandler () {
+      this.isCollapse = true
+    }
   }
 }
 </script>
