@@ -2,7 +2,7 @@
   <div class="header-container">
     <div class="header-container-left">
       <i
-        :class="icon"
+        :class="isCollapse?'el-icon-s-unfold':'el-icon-s-fold'"
         @click="collapseChange"
       />
     </div>
@@ -34,6 +34,12 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'Header',
+  props: {
+    isCollapse: {
+      type: Boolean,
+      default: true
+    }
+  },
   data () {
     return {
       icon: 'el-icon-s-fold'
@@ -46,13 +52,9 @@ export default {
         this.logout()
       }
     },
+    // 导航展开收起事件回调
     collapseChange () {
-      if (this.icon === 'el-icon-s-unfold') {
-        this.icon = 'el-icon-s-fold'
-      } else {
-        this.icon = 'el-icon-s-unfold'
-      }
-      this.$emit('collapse-change')
+      this.$emit('update:is-collapse', !this.isCollapse)
     }
   }
 }
