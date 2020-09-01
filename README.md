@@ -2,7 +2,7 @@
 
 ## 简介
 ---
-`vue-element-system`是一个后台前端解决方案，它基于`vue`和`element-ui`实现。
+`vue-element-system`是一个后台前端解决方案，它基于`vue`和`element-ui`实现。它基于`vue`和`element-ui`实现。
 
 ## 前序准备
 ---
